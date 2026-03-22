@@ -1,0 +1,77 @@
+export const spectralData = {
+    "H": [656, 486, 434, 410],
+    "He": [501, 587, 706, 728],
+    "Li": [670, 610, 497],
+    "Be": [313, 234],
+    "B": [249, 208],
+    "C": [156, 165, 247],
+    "N": [149, 174, 178],
+    "O": [557, 630, 636],
+    "F": [640, 650],
+    "Fe": [438, 527, 533],
+    "Ne": [540, 585, 703, 743],
+    "Na": [589, 590],
+    "Mg": [285, 383, 518],
+    "Al": [396, 394, 309],
+    "Si": [288, 250],
+    "P": [177, 179],
+    "S": [182, 186],
+    "Cl": [519, 550],
+    "Ar": [750, 842],
+    "K": [766, 770],
+    "Ca": [422, 393],
+}
+
+export const stellarClasses = {
+    "O": ["He"],
+    "B": ["He", "H"],
+    "A": ["H"],
+    "F": ["H", "Ca", "Fe"],
+    "G": ["H", "Fe", "Ca"],
+    "K": ["Fe", "Ca"],
+    "M": ["O", "C"],
+}
+
+export const stellarTemperaturesInKelvin = {
+    "O": "30,000+ K",
+    "B": "10,000–30,000 K",
+    "A": "7,500–10,000 K",
+    "F": "6,000–7,500 K",
+    "G": "5,200–6,000 K",
+    "K": "3,700–5,200 K",
+    "M": "2,400–3,700 K",
+}
+
+export const elementNames ={
+    "H": "Hydrogen",
+    "He": "Helium",
+    "Li": "Lithium",
+    "Be": "Beryllium",
+    "B": "Boron",
+    "C": "Carbon",
+    "N": "Nitrogen",
+    "O": "Oxygen",
+    "F": "Fluorine",
+    "Ne": "Neon",
+    "Na": "Sodium",
+    "Mg": "Magnesium",
+    "Al": "Aluminum",
+    "Si": "Silicon",
+    "P": "Phosphorus",
+    "S": "Sulfur",
+    "Cl": "Chlorine",
+    "Ar": "Argon",
+    "K": "Potassium",
+    "Ca": "Calcium",
+    "Fe": "Iron",
+}
+
+export const sampleStellarObjects ={
+    "Sun": ["H", "He", "O", "C", "Fe", "Ca"],
+    "Sirius":["H", "He"],
+    "Betelgeuse":["H", "He", "C", "O", "Si"],
+    "Earth": ["O", "N", "Ar", "C"],
+    "Mars": ["O", "C", "Fe"],
+    "Jupiter":["H", "He"],
+    "Saturn":["H", "He"],
+}
