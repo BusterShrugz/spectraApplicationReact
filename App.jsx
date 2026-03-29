@@ -56,7 +56,7 @@ export default function App() {
 
             <p>{info}</p>
 
-            <SpectrumCanvas
+            <SpectrumBuilder
                 lines={lines}
                 hover={hover}
                 setHover={setHover}

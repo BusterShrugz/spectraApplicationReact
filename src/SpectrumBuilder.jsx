@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import {line} from "framer-motion/m";
 
 export default function SpectrumBuilder({ lines, hover, setHover}) {
     const canvasRef = useRef(null);
@@ -58,7 +59,7 @@ export default function SpectrumBuilder({ lines, hover, setHover}) {
                 const wavelength = 380 + (x / rect.width) * (750 - 380);
 
                 const closest = lines.find(
-                    (l) => Match.abs(l.wavelength - wavelength) < 3
+                    (l) => match.abs(l.wavelength - wavelength) < 3
                 );
 
                 setHover(closest?.wavelength || null);
