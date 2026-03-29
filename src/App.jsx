@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SpectrumBuilder from "./src/SpectrumBuilder";
-import { spectralData, stellarClasses, sampleStellarObjects } from "./data/spectralData";
+import SpectrumBuilder from "./SpectrumBuilder";
+import {sampleStellarObjects, spectralData, stellarClasses} from "../data/spectralData.js";
 
 export default function App() {
     const [lines, setLines] = useState([]);

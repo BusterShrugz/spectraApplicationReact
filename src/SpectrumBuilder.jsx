@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
-import {line} from "framer-motion/m";
 
-export default function SpectrumBuilder({ lines, hover, setHover}) {
+export default function SpectrumBuilder({ lines = [], hover, setHover }) {
     const canvasRef = useRef(null);
 
     const wavelengthToRGB = (waveLength) => {
@@ -18,22 +17,30 @@ export default function SpectrumBuilder({ lines, hover, setHover}) {
 
     const draw = () => {
         const canvas = canvasRef.current;
+        if (!canvas) return;
+
         const ctx = canvas.getContext("2d");
+        if (!ctx) return;
 
         const width = canvas.width;
         const height = canvas.height;
 
-        //gradient
-        for (let x = 0; x < width; x++) {
-            const wavelength = 380 + (x/width) * (750 - 380);
-            const [red, green, blue] = wavelengthToRGB(wavelength);
+        // clear canvas (IMPORTANT)
+        ctx.clearRect(0, 0, width, height);
 
-            ctx.fillStyle = `rgb(${red * 255}, ${green * 255}, ${blue * 255})`;
+        // gradient
+        for (let x = 0; x < width; x++) {
+            const wavelength = 380 + (x / width) * (750 - 380);
+            const [r, g, b] = wavelengthToRGB(wavelength);
+
+            ctx.fillStyle = `rgb(${r * 255}, ${g * 255}, ${b * 255})`;
             ctx.fillRect(x, 0, 1, height);
         }
 
-        //spectral lines
-        lines.forEach((line) => {
+        // spectral lines (safe loop)
+        (lines || []).forEach((line) => {
+            if (!line?.wavelength) return;
+
             const x = ((line.wavelength - 380) / (750 - 380)) * width;
 
             ctx.strokeStyle = "black";
@@ -46,7 +53,9 @@ export default function SpectrumBuilder({ lines, hover, setHover}) {
         });
     };
 
-    useEffect(draw, [line, hover]);
+    useEffect(() => {
+        draw();
+    }, [lines, hover]);
 
     return (
         <canvas
@@ -58,8 +67,8 @@ export default function SpectrumBuilder({ lines, hover, setHover}) {
                 const x = e.clientX - rect.left;
                 const wavelength = 380 + (x / rect.width) * (750 - 380);
 
-                const closest = lines.find(
-                    (l) => match.abs(l.wavelength - wavelength) < 3
+                const closest = (lines || []).find(
+                    (l) => Math.abs(l.wavelength - wavelength) < 3
                 );
 
                 setHover(closest?.wavelength || null);
